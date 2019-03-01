@@ -1,29 +1,19 @@
 package com.test.selenium.hybridTestFramework.pageObjects;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Properties;
-
 import org.openqa.selenium.By;
 
-public class LoginPage {
+import com.test.selenium.hybridTestFramework.base.LoadProperties;
+
+public class LoginPage extends LoadProperties{
 	
-	private static Properties objectRepository = null;
-	private static InputStream inputStream = null;
+	public static final String FILE_NAME = "loginPage.properties";
 	
 	public LoginPage() {
-		objectRepository = new Properties();
-		try {
-			inputStream = new FileInputStream(
-					System.getProperty("user.dir") + "\\src\\main\\resources\\objectRepository\\loginPage.properties");
-			objectRepository.load(inputStream);
-		}catch(Throwable t) {
-			t.printStackTrace();
-		}
+		super(FILE_NAME);
 	}
 	
-	public static By txtEmail = By.xpath(objectRepository.getProperty("txtEmail"));
-	public static By txtPassword = By.xpath(objectRepository.getProperty("txtPassword"));
-	public static By buttonSignIn = By.xpath(objectRepository.getProperty("buttonSignIn"));
+	public By txtEmail = By.xpath(properties.getProperty("txtEmail"));
+	public By txtPassword = By.xpath(properties.getProperty("txtPassword"));
+	public By buttonSignIn = By.xpath(properties.getProperty("buttonSignIn"));
 
 }

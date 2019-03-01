@@ -1,27 +1,17 @@
 package com.test.selenium.hybridTestFramework.pageObjects;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Properties;
-
 import org.openqa.selenium.By;
 
-public class HomePage {
+import com.test.selenium.hybridTestFramework.base.LoadProperties;
+
+public class HomePage extends LoadProperties{
 	
-	private static Properties objectRepository = null;
-	private static InputStream inputStream = null;
+	public static final String FILE_NAME = "homePage.properties";
 
 	public HomePage() {
-		objectRepository = new Properties();
-		try {
-			inputStream = new FileInputStream(
-					System.getProperty("user.dir") + "\\src\\main\\resources\\objectRepository\\homePage.properties");
-			objectRepository.load(inputStream);
-		}catch(Throwable t) {
-			t.printStackTrace();
-		}
+		super(FILE_NAME);
 	}
-
-	public static By linkSignIn = By.xpath(objectRepository.getProperty("linkSignIn"));
+	
+	public By linkSignIn = By.xpath(properties.getProperty("linkSignIn"));
 
 }

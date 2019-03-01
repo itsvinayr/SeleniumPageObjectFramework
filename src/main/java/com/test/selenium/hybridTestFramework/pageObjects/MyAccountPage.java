@@ -1,28 +1,18 @@
 package com.test.selenium.hybridTestFramework.pageObjects;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Properties;
-
 import org.openqa.selenium.By;
 
-public class MyAccountPage {
+import com.test.selenium.hybridTestFramework.base.LoadProperties;
+
+public class MyAccountPage extends LoadProperties{
 	
-	private static Properties objectRepository = null;
-	private static InputStream inputStream = null;
+	public static final String FILE_NAME = "myAccountPage.properties";
 	
 	public MyAccountPage() {
-		objectRepository = new Properties();
-		try {
-			inputStream = new FileInputStream(
-					System.getProperty("user.dir") + "\\src\\main\\resources\\objectRepository\\myAccountPage.properties");
-			objectRepository.load(inputStream);
-		}catch(Throwable t) {
-			t.printStackTrace();
-		}
+		super(FILE_NAME);
 	}
 	
-	public static By linkMyaccount = By.xpath(objectRepository.getProperty("linkMyaccount"));
-	public static By linkSignOut = By.xpath(objectRepository.getProperty("linkSignOut"));
+	public By linkMyaccount = By.xpath(properties.getProperty("linkMyaccount"));
+	public By linkSignOut = By.xpath(properties.getProperty("linkSignOut"));
 
 }
