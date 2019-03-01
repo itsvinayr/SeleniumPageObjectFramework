@@ -1,0 +1,11 @@
+Framework is a way to organize your code
+It should be 
+	a.reusable
+	b.scalable ( used for any kind of applications )
+	c.Maintainable
+	d.Understandable
+	e.workable
+Types of frameworks available
+	a. Data driven - huge number of input data
+	b. Keyword driven - enables non automation testers to write scripts.( excel sheets )
+	c. Hybrid - combination of both data driven and keyword driven.
