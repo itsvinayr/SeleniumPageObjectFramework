@@ -34,11 +34,4 @@ public class LoginSteps {
 		cf.clickSubmitButton();
 	}
 
-	@Then("^user should login successfully$")
-	public void user_should_login_successfully() throws Throwable {
-		cf.mouseHoverLinkMyAccount();
-		cf.logOut();
-		cf.quitBrowser();
-	}
-
 }

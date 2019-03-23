@@ -10,12 +10,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class StartBrowser {
 
 	public static WebDriver driver = null;
-	
+
 	public StartBrowser() {
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+Path.getChromeDriverPath());
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		if (driver == null) {
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + Path.getChromeDriverPath());
+			driver = new ChromeDriver();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+		}
 	}
 
 }
