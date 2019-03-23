@@ -52,6 +52,13 @@ public class ActionDriver {
 		action.moveToElement(mo).build().perform();
 	}
 	
+	/**
+	 * quit the browser
+	 */
+	public void quitBrowser() {
+		driver.quit();
+	}
+	
 	
 
 }
