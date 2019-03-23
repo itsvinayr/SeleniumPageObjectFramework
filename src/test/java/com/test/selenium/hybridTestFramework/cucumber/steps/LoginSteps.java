@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import com.test.selenium.hybridTestFramework.base.LoadTestProperties;
+import com.test.selenium.hybridTestFramework.base.LoadProperties;
+import com.test.selenium.hybridTestFramework.base.Path;
 import com.test.selenium.hybridTestFramework.pageObjects.HomePage;
 import com.test.selenium.hybridTestFramework.pageObjects.LoginPage;
 import com.test.selenium.hybridTestFramework.pageObjects.MyAccountPage;
@@ -21,16 +22,14 @@ import cucumber.api.java.en.Then;
 public class LoginSteps {
 	
 	public static WebDriver driver = null;
-	public String URL = "https://www.costco.com/";
+	public static final LoadProperties property = new LoadProperties(Path.getCredentialPath());
 	public HomePage homePage = new HomePage();
 	public LoginPage loginPage = new LoginPage();
 	public MyAccountPage myAccountPage = new MyAccountPage();
-	public static final String FILE_NAME = "credentials.properties";
-	public static final LoadTestProperties property = new LoadTestProperties(FILE_NAME);
 	
 	@Before
 	public void initialize() {
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\resources\\drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+Path.getChromeDriverPath());
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -39,7 +38,7 @@ public class LoginSteps {
 	@Given("^user navigates to costco$")
 	public void user_navigates_to_costco() throws Throwable {
 	    System.out.println("user navigates to costco");
-		driver.get(URL);
+		driver.get(property.properties.getProperty("testURL"));
 	}
 
 	@When("^user clicks on sign in link$")

@@ -13,7 +13,7 @@ public class LoadProperties {
 	public LoadProperties(String propFileName) {
 		
 		properties = new Properties();
-		file = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\objectRepository\\"+propFileName);
+		file = new File(System.getProperty("user.dir") + propFileName);
 		try {
 			fileInputStream = new FileInputStream(file);
 			properties.load(fileInputStream);
